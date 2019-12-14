@@ -1,0 +1,13 @@
+Mysql地址：
+ip:47.98.181.240
+端口号：3307
+账号：root
+密码：root
+数据库：diandi
+
+源码地址：
+    https://github.com/you19345/diandi.git
+
+Redis:
+
+
