@@ -1,5 +1,6 @@
 package com.diandi.news.dao;
 
+import com.diandi.news.entity.News;
 import com.diandi.user.entity.News;
 
 import java.util.List;
@@ -10,10 +11,6 @@ public interface NewsMapper {
     int insert(News record);
 
     int insertSelective(News record);
-
-    List<News> selectByExampleWithBLOBs(NewsExample example);
-
-    List<News> selectByExample(NewsExample example);
 
     News selectByPrimaryKey(Integer id);
 
