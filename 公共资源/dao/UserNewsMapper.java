@@ -5,7 +5,7 @@ import com.diandi.user.entity.UserNews;
 import java.util.List;
 
 public interface UserNewsMapper {
-    int deleteByPrimaryKey(Double id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(UserNews record);
 
@@ -13,7 +13,7 @@ public interface UserNewsMapper {
 
     List<UserNews> selectByExample(UserNewsExample example);
 
-    UserNews selectByPrimaryKey(Double id);
+    UserNews selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(UserNews record);
 

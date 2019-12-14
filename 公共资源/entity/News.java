@@ -1,7 +1,7 @@
 package com.diandi.user.entity;
 
 public class News {
-    private Double id;
+    private Integer id;
 
     private String pictureUrl;
 
@@ -9,11 +9,11 @@ public class News {
 
     private String content;
 
-    public Double getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

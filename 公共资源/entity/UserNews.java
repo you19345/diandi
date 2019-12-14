@@ -1,33 +1,33 @@
 package com.diandi.user.entity;
 
 public class UserNews {
-    private Double id;
+    private Integer id;
 
-    private Double userId;
+    private Integer userId;
 
-    private Double newsId;
+    private Integer newsId;
 
-    public Double getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Double getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Double userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public Double getNewsId() {
+    public Integer getNewsId() {
         return newsId;
     }
 
-    public void setNewsId(Double newsId) {
+    public void setNewsId(Integer newsId) {
         this.newsId = newsId;
     }
 }

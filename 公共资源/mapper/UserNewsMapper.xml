@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.diandi.user.dao.UserNewsMapper">
   <resultMap id="BaseResultMap" type="com.diandi.user.entity.UserNews">
-    <id column="id" jdbcType="DOUBLE" property="id" />
-    <result column="user_id" jdbcType="DOUBLE" property="userId" />
-    <result column="news_id" jdbcType="DOUBLE" property="newsId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="news_id" jdbcType="INTEGER" property="newsId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -53,20 +53,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user_news
-    where id = #{id,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Double">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_news
-    where id = #{id,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.diandi.user.entity.UserNews">
     insert into user_news (id, user_id, news_id
       )
-    values (#{id,jdbcType=DOUBLE}, #{userId,jdbcType=DOUBLE}, #{newsId,jdbcType=DOUBLE}
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{newsId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.diandi.user.entity.UserNews">
@@ -84,13 +84,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=DOUBLE},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=DOUBLE},
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="newsId != null">
-        #{newsId,jdbcType=DOUBLE},
+        #{newsId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -98,18 +98,18 @@
     update user_news
     <set>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=DOUBLE},
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="newsId != null">
-        news_id = #{newsId,jdbcType=DOUBLE},
+        news_id = #{newsId,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.diandi.user.entity.UserNews">
     update user_news
-    set user_id = #{userId,jdbcType=DOUBLE},
-      news_id = #{newsId,jdbcType=DOUBLE}
-    where id = #{id,jdbcType=DOUBLE}
+    set user_id = #{userId,jdbcType=INTEGER},
+      news_id = #{newsId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

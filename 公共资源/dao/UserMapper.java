@@ -1,11 +1,9 @@
 package com.diandi.user.dao;
 
-import com.diandi.user.entity.User;
-
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Double id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
@@ -13,7 +11,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Double id);
+    User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
 

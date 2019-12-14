@@ -11,7 +11,7 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 14/12/2019 19:47:46
+ Date: 14/12/2019 20:25:34
 */
 
 SET NAMES utf8mb4;
@@ -44,7 +44,7 @@ CREATE TABLE `images`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news`  (
-  `id` double NOT NULL AUTO_INCREMENT COMMENT '文章id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章id',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '文章内容',
   `picture_url` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '图片地址',
   `type_id` int(11) DEFAULT NULL COMMENT '话题类型',
@@ -89,7 +89,7 @@ CREATE TABLE `theme_news`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` double NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '昵称',
   `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '密码',
   `icon` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '头像',
@@ -131,9 +131,9 @@ CREATE TABLE `user_like`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_news`;
 CREATE TABLE `user_news`  (
-  `id` double NOT NULL AUTO_INCREMENT,
-  `user_id` double DEFAULT NULL COMMENT '用户id',
-  `news_id` double DEFAULT NULL COMMENT '新闻id',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL COMMENT '用户id',
+  `news_id` int(11) DEFAULT NULL COMMENT '新闻id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户文章关联表' ROW_FORMAT = Dynamic;
 
@@ -143,7 +143,7 @@ CREATE TABLE `user_news`  (
 DROP TABLE IF EXISTS `user_transpond`;
 CREATE TABLE `user_transpond`  (
   `id` int(11) NOT NULL,
-  `transpond_news` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL COMMENT '用户转发的文章id',
+  `transpond_news` int(255) DEFAULT NULL COMMENT '用户转发的文章id',
   `user_id` int(11) DEFAULT NULL COMMENT '用户id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;

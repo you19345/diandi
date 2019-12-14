@@ -1,67 +1,77 @@
 comment  用户评论表
-        id int(11)
-        retext text  评论内容,
-        user_id int(11)  用户id,
-        news_id int(11)  新闻id,
+        id 		int(11)
+        retext 	text 	 评论内容,
+        user_id 	int(11)  	用户id,
+        news_id 	int(11)  	新闻id,
+
 
 
 images 图片地址表
         id int(11)
         image varchar(255) 图片地址,
 
+
 news  文章表
-        id double  文章id,
-        content text  文章内容,
-        picture_url  图片地址,
-        type_id int(11) 话题类型,
+        id		 int		文章id,
+        content 	text  		文章内容,
+        picture_url  	varchar(150)	图片地址,
+        type_id 	int(11) 		话题类型,
   
+
 news_function  新闻信息量表
-        id int(11) ,
-        likes_nums int(255) 被喜欢量,
-        collect_nums int(255)   被收藏量,
-        tronspond_nums int(255)  被转发量,
-        news_id int(11)  新闻id,
+        id 			int(11) ,
+        likes_nums 		int(255) 	被喜欢量,
+        collect_nums 		int(255)   	被收藏量,
+        tronspond_nums 	int(255)  	被转发量,
+        news_id 		int(11)  		新闻id,
   
+
  theme  新闻类型表
-        id int(255)
-        type varchar(20)  话题类型
+        id 		int(11)
+        type 	varchar(20)  	话题类型
  
+
  theme_news  新闻类型关联表
-        id int(11)
-        theme_id int(11)   话题id,
-        news_id int(11)  新闻id,
+        id 		int(11)
+        theme_id 	int(11)  	 话题id,
+        news_id 	int(11) 	 新闻id,
    
+
  user  用户信息表
         id int
-        username varchar(20)   昵称,
-        password varchar(20)  密码,
-        icon varchar(100)   头像地址,
-        gender tinyint(1)  性别,
-        tel varchar(11)   电话,
-        birthday date   出生年月,
-        address varchar(30)    地址,
-        signature varchar(100)    签名,
-        fans int(11)   粉丝数量,
-        guanzhu int(11)   关注数量,
+        username 	varchar(20)  	 昵称,
+        password 	varchar(20) 	 密码,
+        icon 		varchar(100)   	头像地址,
+        gender 	tinyint(1) 		 性别,
+        tel 		varchar(11)   	电话,
+        birthday 	date   		出生年月,
+        address 	varchar(30)    	地址,
+        signature 	varchar(100)   	 签名,
+        fans 		int(11)  		 粉丝数量,
+        guanzhu 	int(11)   		关注数量,
    
+
  user_collect  用户收藏表
-        id int(11) NOT NULL,
-        collects_news_id int(11)  用户关注收藏的文章id,
+        id 			int(11) 		NOT NULL,
+        collects_news_id 	int(11)  		用户关注收藏的文章id,
         user_id int(11)
   
+
  user_like 用户喜欢表
-        id int(11) NOT NULL,
-        likes_news varchar(255)    用户喜欢的文章id,
-        user_id int(11)
+        id 		int(11) 		NOT NULL,
+        likes_news 	int   		 用户喜欢的文章id,
+        user_id 	int(11)
+
 
  user_news  用户文章关联表
-        id int NOT NULL AUTO_INCREMENT,
-        user_id int   用户id,
-        news_id int  新闻id,
+        id 		int 	
+        user_id 	int  	 用户id,
+        news_id 	int  	新闻id,
   
+
  user_transpond  用户转发表
-        id int(11)  NOT NULL,
-        transpond_news varchar(255)    用户转发的文章id,
-        user_id  int(11)   用户id,
+        id 			int(11)  		NOT NULL,
+        transpond_news 	int   	用户转发的文章id,
+        user_id  		int(11)   		用户id,
    
  

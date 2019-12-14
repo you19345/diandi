@@ -3,7 +3,7 @@ package com.diandi.user.entity;
 public class UserTranspond {
     private Integer id;
 
-    private String transpondNews;
+    private Integer transpondNews;
 
     private Integer userId;
 
@@ -15,12 +15,12 @@ public class UserTranspond {
         this.id = id;
     }
 
-    public String getTranspondNews() {
+    public Integer getTranspondNews() {
         return transpondNews;
     }
 
-    public void setTranspondNews(String transpondNews) {
-        this.transpondNews = transpondNews == null ? null : transpondNews.trim();
+    public void setTranspondNews(Integer transpondNews) {
+        this.transpondNews = transpondNews;
     }
 
     public Integer getUserId() {
