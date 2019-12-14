@@ -1,7 +1,6 @@
 package com.diandi.news.dao;
 
 import com.diandi.news.entity.News;
-import com.diandi.user.entity.News;
 
 import java.util.List;
 
