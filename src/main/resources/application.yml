@@ -17,11 +17,16 @@ spring:
 #server:
 #  port: 8081
 #  servlet:
-#    context-path: "/springboot"
+#    context-path: "/diandi"
 
-#引入映射文件
+#寮曞叆鏄犲皠鏂囦欢
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.diandi
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #sql璇彞杈撳嚭鍒版帶鍒跺彴
+    map-underscore-to-camel-case: true
 
+pagehelper:
+  helper-dialect: mysql
 

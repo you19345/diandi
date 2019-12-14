@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.diandi.user.dao.UserNewsMapper">
+  <resultMap id="BaseResultMap" type="com.diandi.user.entity.UserNews">
+    <id column="id" jdbcType="DOUBLE" property="id" />
+    <result column="user_id" jdbcType="DOUBLE" property="userId" />
+    <result column="news_id" jdbcType="DOUBLE" property="newsId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, user_id, news_id
+  </sql>
+  <select id="selectByExample" parameterType="com.diandi.user.entity.UserNewsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from user_news
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_news
+    where id = #{id,jdbcType=DOUBLE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Double">
+    delete from user_news
+    where id = #{id,jdbcType=DOUBLE}
+  </delete>
+  <insert id="insert" parameterType="com.diandi.user.entity.UserNews">
+    insert into user_news (id, user_id, news_id
+      )
+    values (#{id,jdbcType=DOUBLE}, #{userId,jdbcType=DOUBLE}, #{newsId,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.diandi.user.entity.UserNews">
+    insert into user_news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="newsId != null">
+        news_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DOUBLE},
+      </if>
+      <if test="newsId != null">
+        #{newsId,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.diandi.user.entity.UserNews">
+    update user_news
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=DOUBLE},
+      </if>
+      <if test="newsId != null">
+        news_id = #{newsId,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DOUBLE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.diandi.user.entity.UserNews">
+    update user_news
+    set user_id = #{userId,jdbcType=DOUBLE},
+      news_id = #{newsId,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=DOUBLE}
+  </update>
+</mapper>
