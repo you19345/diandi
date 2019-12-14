@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.diandi.user.dao.NewsMapper">
+<mapper namespace="com.diandi.news.dao.NewsMapper">
   <resultMap id="BaseResultMap" type="com.diandi.news.entity.News">
     <id column="id" jdbcType="DOUBLE" property="id" />
     <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.diandi.user.entity.News">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.diandi.news.entity.News">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -44,38 +44,6 @@
   <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.diandi.user.entity.NewsExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'false' as QUERYID,
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from news
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.diandi.user.entity.NewsExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'false' as QUERYID,
-    <include refid="Base_Column_List" />
-    from news
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
@@ -88,13 +56,13 @@
     delete from news
     where id = #{id,jdbcType=DOUBLE}
   </delete>
-  <insert id="insert" parameterType="com.diandi.user.entity.News">
+  <insert id="insert" parameterType="com.diandi.news.entity.News">
     insert into news (id, picture_url, type_id, 
       content)
     values (#{id,jdbcType=DOUBLE}, #{pictureUrl,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.diandi.user.entity.News">
+  <insert id="insertSelective" parameterType="com.diandi.news.entity.News">
     insert into news
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,7 +93,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.diandi.user.entity.News">
+  <update id="updateByPrimaryKeySelective" parameterType="com.diandi.news.entity.News">
     update news
     <set>
       <if test="pictureUrl != null">
@@ -140,14 +108,7 @@
     </set>
     where id = #{id,jdbcType=DOUBLE}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.diandi.user.entity.News">
-    update news
-    set picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      type_id = #{typeId,jdbcType=INTEGER},
-      content = #{content,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=DOUBLE}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.diandi.user.entity.News">
+  <update id="updateByPrimaryKey" parameterType="com.diandi.news.entity.News">
     update news
     set picture_url = #{pictureUrl,jdbcType=VARCHAR},
       type_id = #{typeId,jdbcType=INTEGER}
