@@ -10,12 +10,12 @@ spring:
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-#    url: jdbc:mysql://47.98.181.240:3307/diandi?serverTimezone=Asia/Shanghai
-    url: jdbc:mysql://localhost:3306/diandi?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.98.181.240:3307/diandi?serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://localhost:3306/diandi?serverTimezone=Asia/Shanghai
 #    url: jdbc:mysql://120.27.240.112/diandi?serverTimezone=Asia/Shanghai
     username: root
-#    password: a110791
-    password: you
+    password: a110791
+#    password: you
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   servlet:
