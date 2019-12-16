@@ -1,5 +1,7 @@
 package com.diandi.user.dao;
 
+import com.diandi.user.entity.User;
+
 import java.util.List;
 
 public interface UserMapper {
@@ -8,8 +10,6 @@ public interface UserMapper {
     int insert(User record);
 
     int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
 
     User selectByPrimaryKey(Integer id);
 

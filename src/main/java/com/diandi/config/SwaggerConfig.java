@@ -28,6 +28,6 @@ public class SwaggerConfig {
     @Bean
     public Docket createD(){
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(createAI()).select().
-                apis(RequestHandlerSelectors.basePackage("com.du.car")).build();
+                apis(RequestHandlerSelectors.basePackage("com.diandi")).build();
     }
 }

@@ -1,32 +1,50 @@
 spring:
   thymeleaf:
     cache: false
-    encoding: utf-8
+    encoding: UTF-8
     prefix: classpath:/templates/
     suffix: .html
     mode: HTML5
     servlet:
       content-type: text/html
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.98.181.240:3307/diandi?serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://47.98.181.240:3307/diandi?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/diandi?serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://120.27.240.112/diandi?serverTimezone=Asia/Shanghai
     username: root
-    password: root
+#    password: a110791
+    password: you
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
 
 #server:
 #  port: 8081
 #  servlet:
 #    context-path: "/diandi"
 
-#引入映射文件
 mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+  mapper-locations: classpath*:/mapper/*.xml
   type-aliases-package: com.diandi
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #sql语句输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
 pagehelper:
   helper-dialect: mysql
-
+server:
+  tomcat:
+    uri-encoding: UTF-8

@@ -1,9 +1,11 @@
 package com.diandi.news.dao;
 
+import com.diandi.dto.NewsQueryDto;
 import com.diandi.news.entity.News;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -13,9 +15,9 @@ public interface NewsMapper {
 
     News selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(News record);
+    List<News> selectAll(NewsQueryDto queryDto);
 
-    int updateByPrimaryKeyWithBLOBs(News record);
+    int updateByPrimaryKeySelective(News record);
 
     int updateByPrimaryKey(News record);
 }

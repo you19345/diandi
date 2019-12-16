@@ -7,7 +7,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@MapperScan("com.daindi.user.dao")
+@MapperScan("com.diandi.user.dao,com.diandi.news.dao")
 public class DiandiApplication {
 
     public static void main(String[] args) {
