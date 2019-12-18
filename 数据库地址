@@ -1,0 +1,10 @@
+Redis：
+    IP：101.37.30.199
+    port：6379
+    author：youdu
+
+mysql:
+    ip：101.37.30.199
+    port:3306
+    username:root
+    password:youdu
