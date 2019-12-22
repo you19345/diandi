@@ -15,6 +15,7 @@ public class D {
     private String msg; //提示
     private Object data; // 携带数据
 
+
     public static D setD(int code,String msg,Object data) {
         D d = new D();
         d.setCode(code);

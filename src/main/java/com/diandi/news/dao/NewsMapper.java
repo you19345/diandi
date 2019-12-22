@@ -2,10 +2,11 @@ package com.diandi.news.dao;
 
 import com.diandi.dto.NewsQueryDto;
 import com.diandi.news.entity.News;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer id);
 

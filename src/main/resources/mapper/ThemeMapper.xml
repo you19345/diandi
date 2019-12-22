@@ -8,5 +8,17 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id,type from diandi.theme
   </select>
-  <insert id="insert" parameterType=""
+  <insert id="insert" parameterType="com.diandi.type.entity.Theme">
+    insert into diandi.theme(type) value(#{record})
+  </insert>
+  <delete id="delete" parameterType="com.diandi.type.entity.Theme">
+    delete from diandi.theme where id = #{id}
+  </delete>
+  <update id="update" parameterType="com.diandi.type.entity.Theme">
+    update diandi.theme set type = #{type}
+  </update>
+
+  <select id="selectById" resultMap="BaseResultMap">
+    select id,type from diandi.theme where id=#{id}
+  </select>
 </mapper>

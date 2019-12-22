@@ -7,10 +7,7 @@ import com.diandi.news.service.NewsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @program: diandi
@@ -39,7 +36,7 @@ public class NewsController {
 
     @ApiOperation(value = "实现新闻的添加",notes = "实现新闻的添加")
     @PostMapping("/newsadd.do")
-    public D newsadd(News news) {
+    public D newsadd(@RequestBody News news) {
         return newsService.insert(news);
     }
 

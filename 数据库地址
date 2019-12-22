@@ -8,3 +8,57 @@ mysql:
     port:3306
     username:root
     password:youdu
+
+    /*
+     Navicat Premium Data Transfer
+
+     Source Server         : ESC
+     Source Server Type    : MySQL
+     Source Server Version : 50728
+     Source Host           : 101.37.30.199:3306
+     Source Schema         : lilongfei
+
+     Target Server Type    : MySQL
+     Target Server Version : 50728
+     File Encoding         : 65001
+
+     Date: 20/12/2019 10:38:59
+    */
+
+    SET NAMES utf8mb4;
+    SET FOREIGN_KEY_CHECKS = 0;
+
+    -- ----------------------------
+    -- Table structure for option
+    -- ----------------------------
+    DROP TABLE IF EXISTS `option`;
+    CREATE TABLE `option`  (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '选项名',
+      `topic_id` int(11) DEFAULT NULL COMMENT '主题id',
+      PRIMARY KEY (`id`) USING BTREE
+    ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '选项表' ROW_FORMAT = Dynamic;
+
+    -- ----------------------------
+    -- Table structure for topic
+    -- ----------------------------
+    DROP TABLE IF EXISTS `topic`;
+    CREATE TABLE `topic`  (
+      `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主题id',
+      `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '主题名',
+      PRIMARY KEY (`id`) USING BTREE
+    ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '主题表' ROW_FORMAT = Dynamic;
+
+    -- ----------------------------
+    -- Table structure for vote
+    -- ----------------------------
+    DROP TABLE IF EXISTS `vote`;
+    CREATE TABLE `vote`  (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `topic_id` int(11) DEFAULT NULL COMMENT '对应题目的id',
+      `option_id` int(11) DEFAULT NULL COMMENT '投票选项的id',
+      `number` int(11) DEFAULT NULL COMMENT '对应选项的投票数量',
+      PRIMARY KEY (`id`) USING BTREE
+    ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '投票信息记录表' ROW_FORMAT = Dynamic;
+
+    SET FOREIGN_KEY_CHECKS = 1;
