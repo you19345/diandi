@@ -40,6 +40,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public D register(User user) {
         user.setPassword(EncryptUtil.aesenc(SystemConfig.PASS_KEY,user.getPassword()));
-        return D.setD(userMapper.insert(user)>0 ? 200:400,"OK",null);
+        return D.setD(userMapper.insertSelective(user)>0 ? 200:400,"OK",null);
     }
 }
