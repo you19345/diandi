@@ -14,40 +14,40 @@ import org.springframework.web.bind.annotation.*;
  * @author: You毒
  * @create: 2019-12-18 20:41
  **/
-@Api(value = "实现类型的CURD",tags = "实现类型的CURD")
+@Api(value = "实现类型的CURD", tags = "实现类型的CURD")
 @RestController
 public class ThemeController {
 
     @Autowired
     public ThemeService themeService;
 
-    @ApiOperation(value = "实现类型的查找",notes = "实现类型的查找")
+    @ApiOperation(value = "实现类型的查找", notes = "实现类型的查找")
     @GetMapping("api/theme/select")
     public D selectAll() {
-       return D.OK(themeService.selectAll());
+        return themeService.selectAll();
     }
 
-    @ApiOperation(value = "实现类型的添加",notes = "实现类型的添加")
+    @ApiOperation(value = "实现类型的添加", notes = "实现类型的添加")
     @PostMapping("api/theme/insert")
     public D insert(Theme theme) {
-        return D.OK(themeService.insert(theme));
+        return themeService.insert(theme);
     }
 
-    @ApiOperation(value = "实现类型的更新",notes = "实现类型的更新")
+    @ApiOperation(value = "实现类型的更新", notes = "实现类型的更新")
     @PutMapping("api/theme/update")
     public D update(Theme theme) {
-        return D.OK(themeService.update(theme));
+        return themeService.update(theme);
     }
 
-    @ApiOperation(value = "实现类型的删除",notes = "实现类型的删除")
+    @ApiOperation(value = "实现类型的删除", notes = "实现类型的删除")
     @DeleteMapping("api/theme/delete")
     public D delete(Integer id) {
-        return D.OK(themeService.delete(id));
+        return themeService.delete(id);
     }
 
-    @ApiOperation(value = "实现类型的删除",notes = "实现类型的删除")
+    @ApiOperation(value = "实现类型的删除", notes = "实现类型的删除")
     @GetMapping("api/theme/selectid")
     public D selectById(Integer id) {
-        return D.OK(themeService.selectById(id));
+        return themeService.selectById(id);
     }
 }

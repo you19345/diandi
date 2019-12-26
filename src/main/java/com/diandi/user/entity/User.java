@@ -1,5 +1,6 @@
 package com.diandi.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public class User {
 
     private String tel;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private String address;
