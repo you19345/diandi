@@ -5,7 +5,6 @@ import com.diandi.dto.NewsQueryDto;
 import com.diandi.news.entity.Comment;
 import com.diandi.news.entity.News;
 import com.diandi.news.entity.UserNews;
-import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -21,7 +20,6 @@ public interface NewsMapper {
 
     int updateByPrimaryKeySelective(News record);
 
-    int updateByPrimaryKey(News record);
 
     List<NewsInfoDto> selectInfo(Integer id);
 
@@ -37,5 +35,9 @@ public interface NewsMapper {
     //    删除新闻时，用户和新闻的关联表
     int deltetUserNews(Integer newsId);
 
+    int likes(Integer nid);
 
+    int collects(Integer nid);
+
+    int transpond(Integer nid);
 }

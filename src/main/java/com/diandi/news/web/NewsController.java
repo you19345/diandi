@@ -16,49 +16,37 @@ import org.springframework.web.bind.annotation.*;
  * @create: 2019-12-15 11:29
  **/
 @Api(value = "实现新闻的CURD",tags = "实现新闻的CURD")
-@RestController("/api/news")
+@RestController
 public class NewsController {
     @Autowired
     private NewsService newsService;
 
     @ApiOperation(value = "实现信息查询分页",notes = "实现信息查询分页")
-    @GetMapping("/newspage.do")
+    @GetMapping("/api/news/newspage.do")
     public D page(NewsQueryDto queryDto) {
-        System.out.println(queryDto.getContent());
         return newsService.queryPage(queryDto);
     }
 
-    @ApiOperation(value = "根据新闻id查询新闻详细信息",notes = "根据新闻id查询新闻详细信息")
-    @GetMapping("/newsdetail")
-    public D detail(Integer id) {
-        return newsService.queryById(id);
-    }
-
     @ApiOperation(value = "实现新闻的添加",notes = "实现新闻的添加")
-    @PostMapping("/newsadd.do")
+    @PostMapping("/api/news/newsadd.do")
     public D newsadd(@RequestBody News news) {
         return newsService.insert(news);
     }
 
     @ApiOperation(value = "根据新闻id实现信息的删除",notes = "根据新闻id实现信息的删除")
-    @DeleteMapping("/newsdelete.do")
+    @DeleteMapping("/api/news/newsdelete.do")
     public D delete(Integer id) {
         return newsService.delete(id);
     }
 
-//    @ApiOperation(value = "根据新闻id实现信息的详细信息评论",notes = "根据新闻id实现信息的详细信息评论")
-//    @GetMapping("/Info.do")
-//    public D selectInfo(Integer id) {
-//        return newsService.selectInfo(id);
-//    }
-
     @ApiOperation(value = "根据新闻id实现信息的详细信息评论",notes = "根据新闻id实现信息的详细信息评论")
-    @GetMapping("/newsInfo.do")
+    @GetMapping("/api/news/newsInfo.do")
     public D newsInfo(Integer id) {
         return newsService.info(id);
     }
+
     @ApiOperation(value = "删除评论",notes="删除评论")
-    @DeleteMapping("/deleteComment.do")
+    @DeleteMapping("/api/news/deleteComment.do")
     public D deleteComment(@RequestBody Integer commentId,Integer userId) {
         return newsService.deleteComment(commentId, userId);
     }

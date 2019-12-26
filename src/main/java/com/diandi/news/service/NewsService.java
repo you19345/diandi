@@ -30,7 +30,6 @@ public interface NewsService {
     //    更新
     D update(News news);
 
-    D selectInfo(Integer id);
 
     //    新闻详情及评论
     D info(Integer id);

@@ -73,15 +73,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public D selectInfo(Integer id) {
-        return D.OK(newsMapper.selectInfo(id));
-    }
-
-    @Override
     public D info(Integer id) {
         NewsInfos newsInfos = new NewsInfos();
         newsInfos.setNews(newsMapper.selectByPrimaryKey(id));
         newsInfos.setComments(newsMapper.selectComment(id));
+        newsInfos.setLikes(newsMapper.likes(id));
+        newsInfos.setCollects(newsMapper.collects(id));
+        newsInfos.setTranspond(newsMapper.transpond(id));
         return D.OK(newsInfos);
     }
 

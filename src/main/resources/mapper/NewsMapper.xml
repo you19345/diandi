@@ -96,12 +96,6 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.diandi.news.entity.News">
-    update news
-    set picture_url = #{pictureUrl,jdbcType=VARCHAR},
-      type_id = #{typeId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
 
   <select id="selectInfo" resultType="com.diandi.dto.NewsInfoDto">
     select t1.id as newsId,t1.user_id t1.content, t1.picture_url, t1.type_id,t2.retext, t2.user_id from diandi.news t1 left join diandi.comment t2 on t1.id = t2.news_id where t2.news_id=#{id}
@@ -122,4 +116,16 @@
   <delete id="deltetUserNews">
     delete from diandi.user_news where user_id=#{newsId}
   </delete>
+
+  <select id="likes" resultType="int">
+    select count(id) from diandi.user_like where likes_news=#{nid}
+  </select>
+
+  <select id="collects" resultType="int">
+    select count(id) from diandi.user_collect where collects_news_id=#{nid}
+  </select>
+
+  <select id="transpond" resultType="int">
+    select count(id) from diandi.user_transpond where transpond_news=#{nid}
+  </select>
 </mapper>

@@ -16,4 +16,8 @@ import java.util.List;
 public class NewsInfos {
     private News news;
     private List<Comment> comments;
+    private long likes;
+    private long collects;
+    private long transpond;
+
 }
