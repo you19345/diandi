@@ -14,4 +14,6 @@ public interface UserService {
     D login(UserLoginDto loginDto);
 
     D register(User user);
+
+    D update(User user);
 }

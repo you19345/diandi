@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public D login(UserLoginDto loginDto) {
-        User info= userMapper.login(loginDto.getTel());
+        User info= userMapper.login(loginDto.getUsername());
         if (info!=null) {
             //密码比对
             if (info.getPassword().equals(EncryptUtil.aesenc(SystemConfig.PASS_KEY,loginDto.getPassword()))) {
@@ -41,5 +41,13 @@ public class UserServiceImpl implements UserService {
     public D register(User user) {
         user.setPassword(EncryptUtil.aesenc(SystemConfig.PASS_KEY,user.getPassword()));
         return D.setD(userMapper.insertSelective(user)>0 ? 200:400,"OK",null);
+    }
+
+    @Override
+    public D update(User user) {
+        if (userMapper.updateByPrimaryKeySelective(user) > 0) {
+            return D.OK();
+        }
+        return D.fail("网络出错，请稍后再试！！！");
     }
 }

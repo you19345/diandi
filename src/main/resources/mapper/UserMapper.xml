@@ -11,11 +11,9 @@
     <result column="birthday" jdbcType="DATE" property="birthday" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="signature" jdbcType="VARCHAR" property="signature" />
-    <result column="fans" jdbcType="INTEGER" property="fans" />
-    <result column="guanzhu" jdbcType="INTEGER" property="guanzhu" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, password, icon, gender, tel, birthday, address, signature, fans, guanzhu
+    id, username, password, icon, gender, tel, birthday, address, signature
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -30,19 +28,14 @@
   <insert id="insert" parameterType="com.diandi.user.entity.User">
     insert into user (id, username, password, 
       icon, gender, tel, birthday, 
-      address, signature, fans, 
-      guanzhu)
+      address, signature)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{icon,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, #{tel,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
-      #{address,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{fans,jdbcType=INTEGER}, 
-      #{guanzhu,jdbcType=INTEGER})
+      #{address,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.diandi.user.entity.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="username != null">
         username,
       </if>
@@ -65,19 +58,10 @@
         address,
       </if>
       <if test="signature != null">
-        signature,
-      </if>
-      <if test="fans != null">
-        fans,
-      </if>
-      <if test="guanzhu != null">
-        guanzhu,
+        signature
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -101,12 +85,6 @@
       </if>
       <if test="signature != null">
         #{signature,jdbcType=VARCHAR},
-      </if>
-      <if test="fans != null">
-        #{fans,jdbcType=INTEGER},
-      </if>
-      <if test="guanzhu != null">
-        #{guanzhu,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -137,12 +115,6 @@
       <if test="signature != null">
         signature = #{signature,jdbcType=VARCHAR},
       </if>
-      <if test="fans != null">
-        fans = #{fans,jdbcType=INTEGER},
-      </if>
-      <if test="guanzhu != null">
-        guanzhu = #{guanzhu,jdbcType=INTEGER},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -155,13 +127,11 @@
       tel = #{tel,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE},
       address = #{address,jdbcType=VARCHAR},
-      signature = #{signature,jdbcType=VARCHAR},
-      fans = #{fans,jdbcType=INTEGER},
-      guanzhu = #{guanzhu,jdbcType=INTEGER}
+      signature = #{signature,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
   <select id="login" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"></include> from diandi.user where tel=#{tel}
+    select <include refid="Base_Column_List"></include> from diandi.user where username=#{username}
   </select>
 </mapper>

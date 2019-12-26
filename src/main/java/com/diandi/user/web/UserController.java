@@ -34,4 +34,10 @@ public class UserController {
         return userService.register(user);
     }
 
+    @ApiOperation(value = "修改个人信息")
+    @PostMapping("api/user/modify.do")
+    public D modify(User user) {
+        return userService.update(user);
+    }
+
 }
