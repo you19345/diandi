@@ -45,4 +45,22 @@ public class NewsController {
     public D delete(Integer id) {
         return newsService.delete(id);
     }
+
+//    @ApiOperation(value = "根据新闻id实现信息的详细信息评论",notes = "根据新闻id实现信息的详细信息评论")
+//    @GetMapping("/Info.do")
+//    public D selectInfo(Integer id) {
+//        return newsService.selectInfo(id);
+//    }
+
+    @ApiOperation(value = "根据新闻id实现信息的详细信息评论",notes = "根据新闻id实现信息的详细信息评论")
+    @GetMapping("/newsInfo.do")
+    public D newsInfo(Integer id) {
+        return newsService.info(id);
+    }
+    @ApiOperation(value = "删除评论",notes="删除评论")
+    @DeleteMapping("/deleteComment.do")
+    public D deleteComment(@RequestBody Integer commentId,Integer userId) {
+        return newsService.deleteComment(commentId, userId);
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.diandi.comment.entity;
+package com.diandi.news.entity;
 
 import lombok.Data;
 
@@ -11,5 +11,4 @@ public class Comment {
     private Integer newsId;
 
     private String retext;
-
 }

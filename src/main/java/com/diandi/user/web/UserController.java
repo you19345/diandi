@@ -1,6 +1,7 @@
 package com.diandi.user.web;
 
 import com.diandi.common.vo.D;
+import com.diandi.dto.UserLoginDto;
 import com.diandi.user.entity.User;
 import com.diandi.user.service.UserService;
 import io.swagger.annotations.Api;
@@ -22,8 +23,15 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value = "用户的登录验证")
-    @PostMapping("api/user/login")
-    public D login(User user) {
-        return D.OK(userService.login(user));
+    @PostMapping("api/user/login.do")
+    public D login(UserLoginDto loginDto) {
+        return userService.login(loginDto);
     }
+
+    @ApiOperation(value = "用户的注册")
+    @PostMapping("api/user/register.do")
+    public D register(User user) {
+        return userService.register(user);
+    }
+
 }

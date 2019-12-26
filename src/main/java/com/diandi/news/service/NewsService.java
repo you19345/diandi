@@ -1,8 +1,12 @@
 package com.diandi.news.service;
 
 import com.diandi.common.vo.D;
+import com.diandi.dto.NewsInfoDto;
 import com.diandi.dto.NewsQueryDto;
 import com.diandi.news.entity.News;
+import io.swagger.models.auth.In;
+
+import java.util.List;
 
 /**
  * @program: diandi
@@ -25,4 +29,12 @@ public interface NewsService {
 
     //    更新
     D update(News news);
+
+    D selectInfo(Integer id);
+
+    //    新闻详情及评论
+    D info(Integer id);
+
+    // 删除评论
+    D deleteComment(Integer commentId, Integer userId);
 }

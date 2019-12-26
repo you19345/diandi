@@ -16,6 +16,7 @@ news  文章表
         content 	text  		文章内容,
         picture_url  	varchar(150)	图片地址,
         type_id 	int(11) 		话题类型,
+        user_id     int         用户id
   
 
 news_function  新闻信息量表

@@ -162,6 +162,6 @@
   </update>
 
   <select id="login" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"></include> from diandi.user where username=#{username}
+    select <include refid="Base_Column_List"></include> from diandi.user where tel=#{tel}
   </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.diandi.news.service.impl;
 
 import com.diandi.common.vo.D;
+import com.diandi.dto.NewsInfos;
 import com.diandi.dto.NewsQueryDto;
 import com.diandi.news.dao.NewsMapper;
 import com.diandi.news.entity.News;
@@ -9,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,8 +26,10 @@ public class NewsServiceImpl implements NewsService {
     private NewsMapper newsMapper;
 
     @Override
+    @Transactional
     public D insert(News news) {
         if (newsMapper.insert(news) > 0) {
+//            newsMapper.insertUserNews()
             return D.OK();
         } else {
             return D.fail();
@@ -66,5 +70,32 @@ public class NewsServiceImpl implements NewsService {
         } else {
             return D.fail();
         }
+    }
+
+    @Override
+    public D selectInfo(Integer id) {
+        return D.OK(newsMapper.selectInfo(id));
+    }
+
+    @Override
+    public D info(Integer id) {
+        NewsInfos newsInfos = new NewsInfos();
+        newsInfos.setNews(newsMapper.selectByPrimaryKey(id));
+        newsInfos.setComments(newsMapper.selectComment(id));
+        return D.OK(newsInfos);
+    }
+
+    @Override
+    public D deleteComment(Integer commentId, Integer userId) {
+        if (userId != null) {
+            if (newsMapper.deleteComment(commentId,userId)>0) {
+                return D.OK();
+            } else {
+                return D.fail("你没有权限");
+            }
+        } else {
+            return D.fail("请登录！！！");
+        }
+
     }
 }

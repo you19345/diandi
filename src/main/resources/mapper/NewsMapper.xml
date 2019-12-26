@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="user_id" javaType="INTEGER" property="userId"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.diandi.news.entity.News">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -39,13 +40,13 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, picture_url, type_id
+    id, picture_url, type_id,user_id
   </sql>
   <sql id="Blob_Column_List">
     content
   </sql>
   <sql id="newsAll">
-    id, content,picture_url, type_id
+    id, content,picture_url, type_id,user_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
@@ -76,40 +77,9 @@
   </delete>
   <insert id="insert" parameterType="com.diandi.news.entity.News">
     insert into news (id, picture_url, type_id, 
-      content)
+      content,user_id)
     values (#{id,jdbcType=INTEGER}, #{pictureUrl,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
-      #{content,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.diandi.news.entity.News">
-    insert into news
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="pictureUrl != null">
-        picture_url,
-      </if>
-      <if test="typeId != null">
-        type_id,
-      </if>
-      <if test="content != null">
-        content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="pictureUrl != null">
-        #{pictureUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="typeId != null">
-        #{typeId,jdbcType=INTEGER},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
+      #{content,jdbcType=LONGVARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.diandi.news.entity.News">
     update news
@@ -132,4 +102,24 @@
       type_id = #{typeId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectInfo" resultType="com.diandi.dto.NewsInfoDto">
+    select t1.id as newsId,t1.user_id t1.content, t1.picture_url, t1.type_id,t2.retext, t2.user_id from diandi.news t1 left join diandi.comment t2 on t1.id = t2.news_id where t2.news_id=#{id}
+  </select>
+
+  <select id="selectComment" resultType="com.diandi.news.entity.Comment">
+    select t1.id,t1.retext,t1.user_id from diandi.comment t1 where t1.news_id=#{id}
+  </select>
+
+  <delete id="deleteComment">
+    delete from diandi.comment where id=#{commentId} and user_id=#{userId}
+  </delete>
+
+  <insert id="insertUserNews">
+    insert into diandi.user_news(user_id, news_id) value (#{userId},#{newsId})
+  </insert>
+
+  <delete id="deltetUserNews">
+    delete from diandi.user_news where user_id=#{newsId}
+  </delete>
 </mapper>

@@ -1,5 +1,6 @@
 package com.diandi.user.dao;
 
+import com.diandi.dto.UserLoginDto;
 import com.diandi.user.entity.User;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User login(User user);
+    User login(String tel);
+
+
 }

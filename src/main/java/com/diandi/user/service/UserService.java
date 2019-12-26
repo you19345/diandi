@@ -1,5 +1,7 @@
 package com.diandi.user.service;
 
+import com.diandi.common.vo.D;
+import com.diandi.dto.UserLoginDto;
 import com.diandi.user.entity.User;
 
 /**
@@ -9,5 +11,7 @@ import com.diandi.user.entity.User;
  * @create: 2019-12-21 16:29
  **/
 public interface UserService {
-    User login(User user);
+    D login(UserLoginDto loginDto);
+
+    D register(User user);
 }
