@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.diandi.collect.dao.CollectDao">
+
+    <resultMap id="CollectMap" type="com.diandi.collect.entity.Collect">
+        <id property="id" column="id"></id>
+        <result property="collects_news_id" column="collects_news_id"></result>
+        <result property="user_id" column="user_id"></result>
+        <result property="uc_time" column="uc_time"></result>
+    </resultMap>
+
+    <resultMap id="CollectQueryMap" type="com.diandi.collect.entity.CollectQuery">
+        <id property="id" column="id"></id>
+        <result property="content" column="content"></result>
+        <result property="picture_url" column="picture_url"></result>
+        <result property="uc_time" column="uc_time"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.diandi.collect.entity.Collect">
+        insert into user_collect(id, collects_news_id, user_id, uc_time)
+        values (#{id}, #{collects_news_id}, #{user_id}, #{uc_time});
+    </insert>
+
+    <delete id="deleteByCollectId" parameterType="com.diandi.collect.entity.Collect">
+        delete
+        from user_collect
+        where id = #{id};
+    </delete>
+
+    <select id="queryByCollectId" resultMap="CollectQueryMap">
+        SELECT news.id, news.content, news.picture_url, user_collect.uc_time
+        FROM news
+                 LEFT JOIN user on news.user_id = user.id
+                 LEFT JOIN user_collect on user_collect.id = news.id
+        where user_collect.collects_news_id = #{id};
+
+    </select>
+
+</mapper>
