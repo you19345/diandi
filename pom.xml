@@ -21,7 +21,7 @@
         <druid.version>1.1.20</druid.version>
         <swgger2.version>2.9.2</swgger2.version>
         <jedis.version>3.1.0</jedis.version>
-        <fileupload.version>1.4</fileupload.version>
+        <fileupload.version>1.5</fileupload.version>
     </properties>
 
     <!--    限定版本-->
@@ -151,7 +151,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.4</version>
+            <version>1.5</version>
         </dependency>
 
         <!--    springboot项目    pagehelper物理分页插件包-->
